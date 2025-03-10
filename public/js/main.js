@@ -1,22 +1,41 @@
 document.addEventListener('DOMContentLoaded', function() {
   console.log("Welcome to the High School Music Department website!");
 
-  // Get the container where events will be displayed
-  const eventsList = document.getElementById('events-list');
+  // Get the container element for the event tiles
+  const eventsContainer = document.getElementById('events-container');
 
-  // Call the function to listen for events from Firestore
+  // Use the real-time listener to update events
   listenToEvents((error, events) => {
     if (error) {
       console.error("Error listening to events:", error);
       return;
     }
-    // Clear the list before adding new events
-    eventsList.innerHTML = "";
-    // Loop through each event and create a list item
+    // Clear the container before adding updated events
+    eventsContainer.innerHTML = "";
+    // Loop through events and create tiles for each
     events.forEach(event => {
-      const li = document.createElement('li');
-      li.textContent = `${event.title} - ${event.date}`;
-      eventsList.appendChild(li);
+      const tile = document.createElement('div');
+      tile.classList.add('event-tile');
+
+      // Create a title element
+      const title = document.createElement('h3');
+      title.textContent = event.title;
+      tile.appendChild(title);
+
+      // Create a date element
+      const date = document.createElement('p');
+      date.textContent = event.date;
+      tile.appendChild(date);
+
+      // Optionally add more details, like description
+      if (event.description) {
+        const description = document.createElement('p');
+        description.textContent = event.description;
+        tile.appendChild(description);
+      }
+      
+      eventsContainer.appendChild(tile);
     });
   });
 });
+

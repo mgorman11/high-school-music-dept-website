@@ -1,10 +1,12 @@
 // Firebase configuration (replace with your actual config values)
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    // ... add other config values as needed
-  };
+    apiKey: "AIzaSyAuVztItdIh-TUM3oBG7bwPlI9CeS-3hq0",
+    authDomain: "high-school-music-dept-website.firebaseapp.com",
+    projectId: "high-school-music-dept-website",
+    storageBucket: "high-school-music-dept-website.firebasestorage.app",
+  messagingSenderId: "1066905779361",
+  appId: "1:1066905779361:web:c4f1516e94e703b620c4e0"
+};
   
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);

@@ -79,3 +79,34 @@ section h2 {
   margin-bottom: 1rem;
   color: #333;
 }
+/* Events Tiles Container */
+#events-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+/* Individual Event Tile */
+.event-tile {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.event-tile h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.event-tile p {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
