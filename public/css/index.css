@@ -1,23 +1,39 @@
-/* Hero Section */
+/* Hero Section with Video Background */
 .hero {
-    background: url('../images/hero-bg.jpg') no-repeat center center/cover;
+    position: relative;
     height: 100vh; /* Full viewport height */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px;
-    color: #fff;
-    margin-top: 60px; /* Adjust for fixed nav bar */
+    overflow: hidden;
+    margin-top: 60px; /* To account for the fixed nav bar */
   }
   
-  .hero h1 {
+  /* Style for the video element */
+  .hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Overlay for text content */
+  .hero-overlay {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+  }
+  
+  .hero-overlay h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
   }
   
-  .hero p {
+  .hero-overlay p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
   }
@@ -34,6 +50,4 @@
   .btn:hover {
     background: #e64a19;
   }
-  
-  /* Additional index-specific styles (if needed) can go here */
   
