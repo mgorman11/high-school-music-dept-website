@@ -19,18 +19,18 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.8);
+  padding: 1.5rem 2rem; /* Increased padding */
+  background: #222; /* Solid, darker background */
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 100;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
 }
 
 nav .logo a {
   color: #fff;
-  font-size: 1.8rem;
+  font-size: 2rem; /* Larger logo text */
   font-weight: 700;
   text-decoration: none;
 }
@@ -47,12 +47,14 @@ nav .logo a {
 .nav-links a {
   color: #fff;
   text-decoration: none;
+  font-size: 1.1rem; /* Slightly larger links */
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
   color: #ddd;
 }
+
 
 /* Footer */
 footer {
