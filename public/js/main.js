@@ -12,30 +12,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // Clear the container before adding updated events
     eventsContainer.innerHTML = "";
-    // Loop through events and create tiles for each
+
+    // Loop through events and create a tile for each event
     events.forEach(event => {
       const tile = document.createElement('div');
       tile.classList.add('event-tile');
 
-      // Create a title element
+      // Create a title element and append it to the tile
       const title = document.createElement('h3');
       title.textContent = event.title;
       tile.appendChild(title);
 
-      // Create a date element
-      const date = document.createElement('p');
-      date.textContent = event.date;
-      tile.appendChild(date);
-
-      // Optionally add more details, like description
+      // Optionally add a description element if available
       if (event.description) {
         const description = document.createElement('p');
         description.textContent = event.description;
         tile.appendChild(description);
       }
       
+      // Create a date element with a specific class for styling
+      const date = document.createElement('p');
+      date.classList.add('event-date');
+      date.textContent = event.date;
+      tile.appendChild(date);
+
+      // Append the tile to the container
       eventsContainer.appendChild(tile);
     });
   });
 });
+
 
