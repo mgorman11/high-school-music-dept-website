@@ -1,27 +1,27 @@
 [
   {
-    "": "Cupidatat velit.",
-    "__1": "March 18, 2025",
-    "__2": "Dolor voluptate proident exercitation laborum incididunt duis sit."
+    "title": "Cupidatat velit.",
+    "date": "2025-03-18",
+    "description": "Dolor voluptate proident exercitation laborum incididunt duis sit."
   },
   {
-    "": "Exercitation consequat.",
-    "__1": "May 15, 2025",
-    "__2": "Est et deserunt veniam aute nisi elit."
+    "title": "Exercitation consequat.",
+    "date": "2025-05-15",
+    "description": "Est et deserunt veniam aute nisi elit."
   },
   {
-    "": "Aliqua enim aliquip.",
-    "__1": "August 7, 2025",
-    "__2": ""
+    "title": "Aliqua enim aliquip.",
+    "date": "2025-08-07",
+    "description": ""
   },
   {
-    "": "Incididunt veniam.",
-    "__1": "September 8, 2025",
-    "__2": "Fugiat sint nisi cillum est pariatur."
+    "title": "Incididunt veniam.",
+    "date": "2025-09-08",
+    "description": "Fugiat sint nisi cillum est pariatur."
   },
   {
-    "": "Nulla et.",
-    "__1": "December 25, 2025",
-    "__2": "Fugiat ex ipsum qui elit pariatur pariatur occaecat."
+    "title": "Nulla et.",
+    "date": "2025-12-25",
+    "description": "Fugiat ex ipsum qui elit pariatur pariatur occaecat."
   }
 ]
