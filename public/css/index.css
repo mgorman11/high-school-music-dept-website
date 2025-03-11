@@ -172,6 +172,7 @@ section h2 {
   height: 150px;
   object-fit: contain;
   transition: transform 0.3s ease, filter 0.3s ease;
+  margin-bottom: 1rem;
 }
 
 .achievement-card img:hover {
