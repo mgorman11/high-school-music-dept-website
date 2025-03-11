@@ -45,8 +45,7 @@
 }
 
 .btn {
-  background: var(--primary-red);
-  color: var(--white);
+  background: #808080;
 }
 
 /* Main Content Sections */
