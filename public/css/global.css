@@ -45,7 +45,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
-  background: var(--black); /* Uses your defined black */
+  background: var(--primary-red); /* Uses your defined black */
   position: fixed;
   top: 0;
   width: 100%;

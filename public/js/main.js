@@ -10,11 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
       console.error("Error listening to events:", error);
       return;
     }
+
     // Clear the container before adding updated events
     eventsContainer.innerHTML = "";
 
-    // Loop through events and create a tile for each event
-    events.forEach(event => {
+    // Limit to 3 events and loop through them
+    events.slice(0, 3).forEach(event => {
       const tile = document.createElement('div');
       tile.classList.add('event-tile');
 
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Append the content wrapper to the tile
       tile.appendChild(content);
-      
+
       // Create a date element with a specific class for styling
       const date = document.createElement('p');
       date.classList.add('event-date');
