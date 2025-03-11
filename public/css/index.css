@@ -138,6 +138,7 @@ section h2 {
   margin: 0 auto;
 }
 
+/* Achievement Card */
 .achievement-card {
   background: var(--white);
   border-radius: 8px;
@@ -165,10 +166,17 @@ section h2 {
   color: var(--grey);
 }
 
+/* Updated: Achievement Card SVG/Image Styling */
 .achievement-card img {
   width: 150px;
   height: 150px;
-  object-fit: contain; /* Maintains aspect ratio */
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.achievement-card img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 /* Contact Section */
