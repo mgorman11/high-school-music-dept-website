@@ -165,6 +165,12 @@ section h2 {
   color: var(--grey);
 }
 
+.achievement-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain; /* Maintains aspect ratio */
+}
+
 /* Contact Section */
 #contact {
   padding: 3rem 2rem;
