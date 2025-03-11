@@ -4,22 +4,23 @@ document.addEventListener('DOMContentLoaded', function() {
   // Get the container element for the event tiles
   const eventsContainer = document.getElementById('events-container');
 
-  // Use the real-time listener to update events
+  // Use the real-time listener (defined in firebase-events.js) to update events
   listenToEvents((error, events) => {
     if (error) {
       console.error("Error listening to events:", error);
       return;
     }
 
-    // Clear the container before adding updated events
+    // Clear the container once before adding new event tiles
     eventsContainer.innerHTML = "";
 
     // Limit to 3 events and loop through them
     events.slice(0, 3).forEach(event => {
+      // Create the event tile container
       const tile = document.createElement('div');
       tile.classList.add('event-tile');
 
-      // Create a wrapper for the main content (title and description)
+      // Create a content wrapper for title and description
       const content = document.createElement('div');
       content.classList.add('content');
 
@@ -44,8 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
       date.textContent = event.date;
       tile.appendChild(date);
 
-      // Append the tile to the container
+      // Append the tile to the events container
       eventsContainer.appendChild(tile);
     });
   });
 });
+

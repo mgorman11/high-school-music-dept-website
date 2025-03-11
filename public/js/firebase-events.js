@@ -30,3 +30,23 @@ const firebaseConfig = {
     });
   }
   
+  /**
+ * Fetch all events (for the events/calendar page).
+ * @param {function(Error|null, Array)} callback - Called with (error, events)
+ */
+function fetchAllEvents(callback) {
+  db.collection("events")
+    .orderBy("date")
+    .onSnapshot(
+      (snapshot) => {
+        const events = [];
+        snapshot.forEach((doc) => {
+          events.push(doc.data());
+        });
+        callback(null, events);
+      },
+      (error) => {
+        callback(error, null);
+      }
+    );
+}
