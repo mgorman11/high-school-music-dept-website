@@ -80,38 +80,54 @@ section h2 {
   color: #333;
 }
 
-/* Parent Container (similar to div#ecfg_events_wrap) */
+/* Parent container for event tiles */
 #events-container {
   display: grid;
-  grid-template-columns: repeat(3, 400.578px); /* Three columns of approx 400.578px each */
-  grid-template-rows: 492.781px; /* Fixed row height */
-  width: 1202.95px; /* Total container width */
-  height: 492.781px; /* Total container height */
-  font: 18px/27.99px "Open Sans Condensed", sans-serif;
-  /* No explicit padding/margin here so the child margins will create spacing */
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Child Elements (similar to .tgs_event) */
+/* Individual event tile styling */
 .event-tile {
+  background: #fff;
+  margin: 0; /* spacing is handled by grid gap */
+  text-align: center;
   display: flex;
-  flex-direction: column; /* Arrange content vertically */
-  position: static; /* Default positioning */
-  color: rgb(31, 31, 31); /* Dark text color */
-  background-color: rgb(255, 255, 255); /* White background */
-  margin: 20px; /* 20px margin on all sides */
-  padding: 0; /* No padding */
-  border: 0; /* No border */
-  width: 360.578px; /* Slightly less than the column width, allowing for the margins */
-  /* Heights can vary – here we set a range using min/max values */
-  min-height: 422.781px;
-  max-height: 452.781px;
-  /* Optional: Add a subtle box-shadow and transition for a modern look */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-direction: column;
+  flex: 1;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  overflow: hidden;  /* useful if images or content exceed container */
 }
 
+/* Inner content padding */
+.event-tile .content {
+  padding: 1.5rem;
+}
+
+/* Event title styling */
+.event-tile h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1f1f1f;
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+/* Event date styling */
+.event-tile .event-date {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: auto; /* push date to bottom if desired */
+}
+
+/* Hover effect for a lift */
 .event-tile:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
+
 
