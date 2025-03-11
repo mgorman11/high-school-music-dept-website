@@ -1,5 +1,12 @@
 /* global.css */
 
+:root {
+  --primary-red: #b22222; /* A muted red; adjust if you prefer a different shade */
+  --grey: #808080;         /* Medium grey */
+  --black: #000000;        /* Black */
+  --white: #ffffff;        /* White */
+}
+
 /* Reset & Global Styles */
 * {
   margin: 0;
@@ -14,18 +21,36 @@ body {
   line-height: 1.6;
 }
 
+/* Button Styling */
+.btn {
+  background: var(--primary-red);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  /* If you want a slightly darker variant, you can either compute it or choose a different color */
+  background: #a11b1b; /* a darker muted red */
+}
+
 /* Navigation */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem; /* Increased padding */
-  background: #222; /* Solid, darker background */
+  padding: 1.5rem 2rem;
+  background: var(--black); /* Uses your defined black */
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 100;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 nav .logo a {
@@ -52,8 +77,9 @@ nav .logo a {
 }
 
 .nav-links a:hover {
-  color: #ddd;
+  color: var(--grey); /* or choose a different variation, such as a lighter shade */
 }
+
 
 
 /* Footer */
