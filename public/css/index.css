@@ -1,11 +1,11 @@
-/* index.css */
-
-/* Hero Section with Video Background */
+/* Hero Section */
 .hero {
   position: relative;
-  height: 100vh; /* Full viewport height */
+  height: 90vh;
   overflow: hidden;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero-video {
@@ -18,7 +18,7 @@
   height: auto;
   z-index: 1;
   transform: translate(-50%, -50%);
-  filter: brightness(0.75); /* Darkens the video for better text contrast */
+  filter: brightness(0.6);
 }
 
 .hero-overlay {
@@ -28,94 +28,165 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  color: #fff;
   text-align: center;
-  padding: 0 20px;
+  width: 80%;
+  max-width: 900px;
+  color: var(--white);
 }
 
 .hero-overlay h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
+  font-weight: 700;
   margin-bottom: 1rem;
 }
 
 .hero-overlay p {
   font-size: 1.2rem;
+  font-weight: 300;
   margin-bottom: 2rem;
+  max-width: 700px;
 }
 
 .btn {
-  background: #808080;
+  background: var(--primary-red);
+  color: var(--white);
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background: #951a1a;
+  transform: scale(1.05);
 }
 
 /* Main Content Sections */
 main {
   max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 2rem;
+  margin: 0 auto;
+  padding: 4rem 1rem;
 }
 
 section {
-  background: #fff;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 3rem 2rem;
+  margin-bottom: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
 }
 
 section h2 {
-  margin-bottom: 1rem;
-  color: #333;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--black);
+  border-bottom: 3px solid var(--primary-red);
+  display: inline-block;
+  padding-bottom: 0.5rem;
 }
 
-/* Parent container for event tiles */
+/* Events Section */
 #events-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 20px;
   padding: 20px;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-/* Individual event tile styling */
 .event-tile {
-  background: #fff;
-  margin: 0; /* spacing is handled by grid gap */
+  background: var(--white);
+  padding: 2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  align-items: center;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
-  overflow: hidden;  /* useful if images or content exceed container */
 }
 
-/* Inner content padding */
-.event-tile .content {
-  padding: 1.5rem;
-}
-
-/* Event title styling */
 .event-tile h3 {
   font-size: 1.5rem;
+  color: var(--primary-red);
+  font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #1f1f1f;
-  font-family: "Open Sans Condensed", sans-serif;
 }
 
-/* Event date styling */
 .event-tile .event-date {
-  font-size: 0.9rem;
-  color: #888;
-  margin-top: auto; /* push date to bottom if desired */
+  font-size: 1rem;
+  color: var(--grey);
+  margin-top: auto;
+  font-weight: 500;
 }
 
-/* Hover effect for a lift */
 .event-tile:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Achievements Section */
+#achievements {
+  padding: 4rem 2rem;
+  background: var(--background-light);
+}
 
+.achievements-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.achievement-card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.achievement-card h3 {
+  font-size: 1.4rem;
+  color: var(--primary-red);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.achievement-card p {
+  font-size: 1rem;
+  color: var(--grey);
+}
+
+/* Contact Section */
+#contact {
+  padding: 3rem 2rem;
+  background: var(--white);
+}
+
+#contact p {
+  font-size: 1.1rem;
+}
+
+#contact a {
+  color: var(--primary-red);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#contact a:hover {
+  text-decoration: underline;
+}

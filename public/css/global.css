@@ -1,13 +1,12 @@
-/* global.css */
-
 :root {
-  --primary-red: #b22222; /* A muted red; adjust if you prefer a different shade */
-  --grey: #808080;         /* Medium grey */
-  --black: #000000;        /* Black */
-  --white: #ffffff;        /* White */
+  --primary-red: #b22222;
+  --grey: #808080;
+  --black: #1f1f1f;
+  --white: #ffffff;
+  --background-light: #f9f9f9;
 }
 
-/* Reset & Global Styles */
+/* Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -16,27 +15,12 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background: #f4f4f4;
-  color: #333;
-  line-height: 1.6;
+  background: var(--background-light);
+  color: var(--black);
 }
 
-/* Button Styling */
-.btn {
-  background: var(--primary-red);
-  color: var(--white);
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.btn:hover {
-  /* If you want a slightly darker variant, you can either compute it or choose a different color */
-  background: #a11b1b; /* a darker muted red */
+html {
+  scroll-behavior: smooth;
 }
 
 /* Navigation */
@@ -45,7 +29,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
-  background: var(--primary-red); /* Uses your defined black */
+  background: var(--black);
   position: fixed;
   top: 0;
   width: 100%;
@@ -54,8 +38,8 @@ nav {
 }
 
 nav .logo a {
-  color: #fff;
-  font-size: 2rem; /* Larger logo text */
+  color: var(--white);
+  font-size: 2rem;
   font-weight: 700;
   text-decoration: none;
 }
@@ -70,26 +54,21 @@ nav .logo a {
 }
 
 .nav-links a {
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
-  font-size: 1.1rem; /* Slightly larger links */
+  font-size: 1.1rem;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: var(--grey); /* or choose a different variation, such as a lighter shade */
+  color: var(--grey);
 }
-
-
 
 /* Footer */
 footer {
-  background: #333;
-  color: #fff;
+  background: var(--black);
+  color: var(--white);
   text-align: center;
-  padding: 1rem;
-}
-
-html {
-  scroll-behavior: smooth;
+  padding: 1.5rem;
+  font-size: 1rem;
 }
