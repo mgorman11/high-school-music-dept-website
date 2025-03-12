@@ -191,12 +191,13 @@ section h2 {
 }
 
 .swiper-container {
-  width: 90%;           /* or a fixed width like 1100px */
-  max-width: 1100px;
-  margin: 0 auto;       /* Centers the container horizontally */
-  padding: 2rem 0;
+  width: 100%;          /* Takes full width of its parent */
+  padding-top: 2rem;    
+  padding-bottom: 2rem;
   box-sizing: border-box;
+  margin: 0 auto;       /* Centers it if a max-width is later applied */
 }
+
 
 
 /* Swiper Wrapper */
