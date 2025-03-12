@@ -68,7 +68,7 @@ node_modules/
 # dataconnect generated files
 .dataconnect
 
-config/serviceAccountKey.json
+serviceAccountKey.json
 
 
 .DS_Store
