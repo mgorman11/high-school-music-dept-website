@@ -11,6 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
@@ -51,28 +53,37 @@
       <p>Veniam laborum qui reprehenderit est quis ad occaecat eiusmod proident esse dolore aliquip. Cupidatat enim pariatur nostrud amet veniam mollit voluptate. Esse ad ipsum nostrud ex qui esse dolor velit ad do.</p>
     </section>
 
-    <!-- Achievements Section -->
-    <section id="achievements">
-      <h2>Our Achievements</h2>
-      <div class="achievements-container">
-        <!-- Example Achievement Card -->
-        <div class="achievement-card">
-          <img src="images/2.svg" alt="Achievement 1">
-          <h3>Dolore eiusmod est.</h3>
-          <p>Laborum consequat exercitation est fugiat in.</p>
-        </div>
-        <div class="achievement-card">
-          <img src="images/4.svg" alt="Achievement 2">
-          <h3>Quis nulla.</h3>
-          <p>Lorem enim occaecat labore veniam cillum.</p>
-        </div>
-        <div class="achievement-card">
-          <img src="images/8.svg" alt="Achievement 3">
-          <h3>Labore ad.</h3>
-          <p>Duis labore eu dolor velit amet ea proident.</p>
-        </div>
+<!-- Achievements Section -->
+<section id="achievements">
+  <h2>Our Achievements</h2>
+  <!-- Swiper Container -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <!-- Each achievement card becomes a swiper slide -->
+      <div class="swiper-slide achievement-card">
+        <img src="images/2.svg" alt="Achievement 1">
+        <h3>Dolore eiusmod est.</h3>
+        <p>Laborum consequat exercitation est fugiat in.</p>
       </div>
-    </section>
+      <div class="swiper-slide achievement-card">
+        <img src="images/4.svg" alt="Achievement 2">
+        <h3>Quis nulla.</h3>
+        <p>Lorem enim occaecat labore veniam cillum.</p>
+      </div>
+      <div class="swiper-slide achievement-card">
+        <img src="images/8.svg" alt="Achievement 3">
+        <h3>Labore ad.</h3>
+        <p>Duis labore eu dolor velit amet ea proident.</p>
+      </div>
+      <!-- Add additional slides as needed -->
+    </div>
+    <!-- Optional Pagination and Navigation -->
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
+
 
     <!-- Events Section -->
     <section id="events">
@@ -98,5 +109,8 @@
   <!-- Include Firebase Events file and Main JavaScript -->
   <script src="js/firebase-events.js"></script>
   <script src="js/main.js"></script>
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 </body>
 </html>

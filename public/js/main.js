@@ -1,11 +1,11 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {              // Line 1: Open DOMContentLoaded event callback
   console.log("Welcome to the High School Music Department website!");
 
-  // Get the container element for the event cards
+  // ----- Existing Dynamic Events Code (if any) -----
   const eventsContainer = document.getElementById('events-container');
 
   // Use the real-time listener (defined in firebase-events.js) to update events
-  listenToEvents((error, events) => {
+  listenToEvents((error, events) => {                                    // Open listenToEvents callback
     if (error) {
       console.error("Error listening to events:", error);
       return;
@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
     eventsContainer.innerHTML = "";
 
     // Limit to 3 events and loop through them
-    events.slice(0, 3).forEach(event => {
-      // Create the event card container (renamed to event-card for horizontal layout)
+    events.slice(0, 3).forEach(event => {                                 // Open forEach callback
+      // Create the event card container (for horizontal layout)
       const card = document.createElement('div');
-      card.classList.add('event-card'); // Use this class in your CSS for horizontal layout
+      card.classList.add('event-card');
 
       // Create a date badge element for the event
       const dateBadge = document.createElement('div');
@@ -47,7 +47,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Append the card to the events container
       eventsContainer.appendChild(card);
-    });
-  });
-});
+    });                                                                  // Close forEach callback
+  });                                                                    // Close listenToEvents callback
 
+  // ----- Achievements Slider Initialization -----
+  var swiper = new Swiper('.swiper-container', {                       // Open Swiper initialization
+    slidesPerView: 3,           // Number of slides visible at once
+    spaceBetween: 20,           // Space between slides in pixels
+    loop: true,                 // Enable continuous loop mode
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+      480: {
+        slidesPerView: 1,
+      }
+    }
+  });                                                                    // Close Swiper initialization
+
+});                                                                      // Line X: Close DOMContentLoaded event callback
