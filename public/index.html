@@ -41,9 +41,7 @@
         </video>
         <div class="hero-overlay">
           <h1>Welcome to Our Music Department</h1>
-          <p>
-            Experience the rhythm and harmony that brings us together.
-          </p>
+          <p>Experience the rhythm and harmony that brings us together.</p>
           <a href="#about" class="btn">Learn More</a>
         </div>
       </div>
@@ -79,7 +77,9 @@
       <!-- Contact Section -->
       <section id="contact">
         <h2>Contact Us</h2>
-        <p>Email: <a href="mailto:musicdept@example.com">musicdept@example.com</a></p>
+        <p>
+          Email: <a href="mailto:musicdept@example.com">musicdept@example.com</a>
+        </p>
         <p>Phone: 123-456-7890</p>
       </section>
     </main>
@@ -92,106 +92,6 @@
     <!-- Scripts -->
     <script src="js/firebase-events.js"></script>
     <script src="js/main.js"></script>
-
-    <!-- React Carousel Module -->
-    <script type="module">
-      // Import React libraries and icons from CDN
-      import React, { useState } from "https://cdn.skypack.dev/react";
-      import ReactDOM from "https://cdn.skypack.dev/react-dom";
-      import { TiChevronLeftOutline, TiChevronRightOutline } from "https://cdn.skypack.dev/react-icons/ti";
-
-      const MAX_VISIBILITY = 3;
-
-      // Achievement Card Component
-      const AchievementCard = ({ title, description, imgSrc, altText }) => (
-        <div className="achievement-card">
-          <img src={imgSrc} alt={altText} />
-          <h3>{title}</h3>
-          <p>{description}</p>
-        </div>
-      );
-
-      // Carousel Component
-      const Carousel = ({ children }) => {
-        const [active, setActive] = useState(0);
-        const count = React.Children.count(children);
-
-        return (
-          <div className="carousel">
-            {active > 0 && (
-              <button className="carousel-button prev" onClick={() => setActive(i => i - 1)}>
-                <TiChevronLeftOutline />
-              </button>
-            )}
-            {React.Children.map(children, (child, i) => (
-              <div
-                className="card-container"
-                style={{
-                  "--active": i === active ? 1 : 0,
-                  "--offset": (active - i) / 3,
-                  "--abs-offset": Math.abs(active - i) / 3,
-                  pointerEvents: active === i ? "auto" : "none",
-                  opacity: Math.abs(active - i) >= MAX_VISIBILITY ? "0" : "1",
-                  display: Math.abs(active - i) > MAX_VISIBILITY ? "none" : "block"
-                }}
-              >
-                {child}
-              </div>
-            ))}
-            {active < count - 1 && (
-              <button className="carousel-button next" onClick={() => setActive(i => i + 1)}>
-                <TiChevronRightOutline />
-              </button>
-            )}
-          </div>
-        );
-      };
-
-      // Sample achievement data (replace these with your actual data)
-      const achievements = [
-        {
-          title: "Dolore eiusmod est.",
-          description: "Laborum consequat exercitation est fugiat in.",
-          imgSrc: "images/2.svg",
-          altText: "Achievement 1"
-        },
-        {
-          title: "Quis nulla.",
-          description: "Lorem enim occaecat labore veniam cillum.",
-          imgSrc: "images/4.svg",
-          altText: "Achievement 2"
-        },
-        {
-          title: "Labore ad.",
-          description: "Duis labore eu dolor velit amet ea proident.",
-          imgSrc: "images/8.svg",
-          altText: "Achievement 3"
-        }
-        // Add more achievement objects as needed
-      ];
-
-      // Main React App for the Carousel
-      const App = () => (
-        <Carousel>
-          {achievements.map((item, i) => (
-            <AchievementCard
-              key={i}
-              title={item.title}
-              description={item.description}
-              imgSrc={item.imgSrc}
-              altText={item.altText}
-            />
-          ))}
-        </Carousel>
-      );
-
-      // Render the React App into the designated container
-      ReactDOM.render(<App />, document.getElementById("react-carousel"));
-    </script>
-    <!-- Scripts at the end of the body -->
-<script src="js/firebase-events.js"></script>
-<script src="js/main.js"></script>
-<script type="module" src="js/carousel.js"></script>
-
+    <script type="module" src="js/carousel.js"></script>
   </body>
 </html>
