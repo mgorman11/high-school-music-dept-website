@@ -1,109 +1,42 @@
-// Carousel.js
-import React, { useState } from "https://cdn.skypack.dev/react";
-import ReactDOM from "https://cdn.skypack.dev/react-dom";
-import * as TiIcons from "https://cdn.skypack.dev/react-icons/ti";
-
-const MAX_VISIBILITY = 3;
-
-const AchievementCard = function(props) {
-  return React.createElement(
-    "div",
-    { className: "achievement-card" },
-    React.createElement("h2", null, props.title),
-    React.createElement("p", null, props.description)
-  );
-};
-
-const Carousel = function(props) {
-  const [active, setActive] = useState(2);
-  const count = React.Children.count(props.children);
-
-  return React.createElement(
-    "div",
-    { className: "carousel" },
-    active > 0 &&
-      React.createElement(
-        "button",
-        {
-          className: "nav left",
-          onClick: function() {
-            setActive(function(i) {
-              return i - 1;
-            });
-          }
-        },
-        React.createElement(TiIcons.TiChevronLeftOutline, null)
-      ),
-    React.Children.map(props.children, function(child, i) {
-      return React.createElement(
-        "div",
-        {
-          className: "card-container",
-          style: {
-            "--active": i === active ? 1 : 0,
-            "--offset": (active - i) / 3,
-            "--abs-offset": Math.abs(active - i) / 3,
-            pointerEvents: active === i ? "auto" : "none",
-            opacity: Math.abs(active - i) >= MAX_VISIBILITY ? "0" : "1",
-            display: Math.abs(active - i) > MAX_VISIBILITY ? "none" : "block"
-          }
-        },
-        child
-      );
-    }),
-    active < count - 1 &&
-      React.createElement(
-        "button",
-        {
-          className: "nav right",
-          onClick: function() {
-            setActive(function(i) {
-              return i + 1;
-            });
-          }
-        },
-        React.createElement(TiIcons.TiChevronRightOutline, null)
-      )
-  );
-};
-
-const achievements = [
-  {
-    title: "Dolore eiusmod est.",
-    description: "Laborum consequat exercitation est fugiat in.",
-    imgSrc: "images/2.svg",
-    altText: "Achievement 1"
-  },
-  {
-    title: "Quis nulla.",
-    description: "Lorem enim occaecat labore veniam cillum.",
-    imgSrc: "images/4.svg",
-    altText: "Achievement 2"
-  },
-  {
-    title: "Labore ad.",
-    description: "Duis labore eu dolor velit amet ea proident.",
-    imgSrc: "images/8.svg",
-    altText: "Achievement 3"
-  }
-  // Add more achievement objects as needed
-];
-
-const App = function() {
-  return React.createElement(
-    Carousel,
-    null,
-    achievements.map(function(item, i) {
-      return React.createElement(AchievementCard, {
-        key: i,
-        title: item.title,
-        description: item.description
-      });
-    })
-  );
-};
-
-ReactDOM.render(
-  React.createElement(App, null),
-  document.getElementById("react-carousel")
-);
+document.addEventListener('DOMContentLoaded', function() {
+    // Get references to key elements
+    const carousel = document.querySelector('.carousel');
+    const slides = document.querySelectorAll('.carousel .slide');
+    const prevBtn = document.querySelector('.carousel-container button.prev');
+    const nextBtn = document.querySelector('.carousel-container button.next');
+  
+    // Set up current slide index; assuming first slide is active
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+  
+    // Get the width of one slide (assumes all slides have equal width)
+    const slideWidth = slides[0].clientWidth;
+  
+    // Function to update the carousel position and active slide class
+    function updateCarousel() {
+      // Remove "active" class from all slides
+      slides.forEach(slide => slide.classList.remove('active'));
+      // Add "active" class to the current slide
+      slides[currentSlide].classList.add('active');
+  
+      // Translate the carousel so the current slide is in view
+      carousel.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    }
+  
+    // Event listener for the "Next" button
+    nextBtn.addEventListener('click', function() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateCarousel();
+      }
+    });
+  
+    // Event listener for the "Prev" button
+    prevBtn.addEventListener('click', function() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateCarousel();
+      }
+    });
+  });
+  

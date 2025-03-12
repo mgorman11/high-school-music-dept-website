@@ -34,25 +34,5 @@ document.addEventListener('DOMContentLoaded', function() {
       eventsContainer.appendChild(card);
     });
   });
-
-  // ----- Removed: Custom Carousel Code for Achievements Section -----
-  // Since the carousel functionality is now handled by React in carousel.js,
-  // the following code is no longer needed:
-  //
-  // const track = document.querySelector('.carousel-track');
-  // const slides = Array.from(track.children);
-  // const nextButton = document.querySelector('.carousel-button.next');
-  // const prevButton = document.querySelector('.carousel-button.prev');
-  //
-  // // Calculate the slide width (including right margin)
-  // const slideWidth = slides[0].getBoundingClientRect().width + 20; // 20px is the right margin
-  //
-  // nextButton.addEventListener('click', function() {
-  //   track.scrollBy({ left: slideWidth, behavior: 'smooth' });
-  // });
-  //
-  // prevButton.addEventListener('click', function() {
-  //   track.scrollBy({ left: -slideWidth, behavior: 'smooth' });
-  // });
 });
 
