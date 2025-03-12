@@ -175,7 +175,8 @@ section h2 {
   margin-bottom: 1rem;
 }
 
-.achievement-card img:hover {
+/* Apply hover effect to image when its parent card is hovered */
+.achievement-card:hover img {
   transform: scale(1.05);
   filter: brightness(1.1);
 }
