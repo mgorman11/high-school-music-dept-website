@@ -189,12 +189,14 @@ section h2 {
   transform: scale(1.05);
   filter: brightness(1.1);
 }
-/* Swiper Container for Achievements */
 .swiper-container {
-  width: 100%;
-  padding: 2rem 0;  /* Adjust vertical spacing as needed */
+  width: 90%;           /* or a fixed width like 1100px */
+  max-width: 1100px;
+  margin: 0 auto;       /* Centers the container horizontally */
+  padding: 2rem 0;
   box-sizing: border-box;
 }
+
 
 /* Swiper Wrapper */
 .swiper-wrapper {
