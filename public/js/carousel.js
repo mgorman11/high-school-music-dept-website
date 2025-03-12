@@ -1,7 +1,7 @@
 // Carousel.js
 import React, { useState } from "https://cdn.skypack.dev/react";
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
-import { TiChevronLeftOutline, TiChevronRightOutline } from "https://cdn.skypack.dev/react-icons/ti";
+import * as TiIcons from "https://cdn.skypack.dev/react-icons/ti";
 
 const MAX_VISIBILITY = 3;
 
@@ -32,7 +32,7 @@ const Carousel = function(props) {
             });
           }
         },
-        React.createElement(TiChevronLeftOutline, null)
+        React.createElement(TiIcons.TiChevronLeftOutline, null)
       ),
     React.Children.map(props.children, function(child, i) {
       return React.createElement(
@@ -62,7 +62,7 @@ const Carousel = function(props) {
             });
           }
         },
-        React.createElement(TiChevronRightOutline, null)
+        React.createElement(TiIcons.TiChevronRightOutline, null)
       )
   );
 };
