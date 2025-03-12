@@ -189,6 +189,7 @@ section h2 {
   transform: scale(1.05);
   filter: brightness(1.1);
 }
+
 .swiper-container {
   width: 90%;           /* or a fixed width like 1100px */
   max-width: 1100px;

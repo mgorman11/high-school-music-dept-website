@@ -50,11 +50,19 @@ document.addEventListener('DOMContentLoaded', function() {              // Line 
     });                                                                  // Close forEach callback
   });                                                                    // Close listenToEvents callback
 
-  // ----- Achievements Slider Initialization -----
-  var swiper = new Swiper('.swiper-container', {                       // Open Swiper initialization
-    slidesPerView: 3,           // Number of slides visible at once
-    spaceBetween: 20,           // Space between slides in pixels
-    loop: true,                 // Enable continuous loop mode
+  var swiper = new Swiper('.swiper-container', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto', // allows slides to adjust automatically
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1.2, // increase to scale the active slide up more
+      slideShadows: true,
+    },
+    loop: true,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -71,6 +79,5 @@ document.addEventListener('DOMContentLoaded', function() {              // Line 
         slidesPerView: 1,
       }
     }
-  });                                                                    // Close Swiper initialization
-
-});                                                                      // Line X: Close DOMContentLoaded event callback
+  });
+});
