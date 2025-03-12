@@ -2,7 +2,7 @@ const admin = require('firebase-admin');
 const fs = require('fs');
 
 // Path to your service account key file
-const serviceAccount = require('./serviceAccountKey.json');
+const serviceAccount = require('../serviceAccountKey.json');
 
 
 // Initialize the Firebase Admin SDK
@@ -13,7 +13,7 @@ admin.initializeApp({
 const db = admin.firestore();
 
 // Read your JSON file containing events
-const events = JSON.parse(fs.readFileSync('events.json', 'utf8'));
+const events = JSON.parse(fs.readFileSync('./data/events.json', 'utf8'));
 
 // Firestore limits batch writes to 500 operations per batch.
 async function importEvents() {
