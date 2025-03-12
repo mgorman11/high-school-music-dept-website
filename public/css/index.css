@@ -189,6 +189,27 @@ section h2 {
   transform: scale(1.05);
   filter: brightness(1.1);
 }
+/* Swiper Container for Achievements */
+.swiper-container {
+  width: 100%;
+  padding: 2rem 0;  /* Adjust vertical spacing as needed */
+  box-sizing: border-box;
+}
+
+/* Swiper Wrapper */
+.swiper-wrapper {
+  /* Swiper applies its own flex layout by default, but you can override if necessary */
+  display: flex;
+}
+
+/* Swiper Slide */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Ensure the slide doesn't add extra spacing, so your achievement card styling remains intact */
+}
+
 
 /* Contact Section */
 #contact {
