@@ -84,6 +84,7 @@ section h2 {
 
 /* Horizontal event card layout */
 .event-card {
+  margin: 10px; /* Adjust as needed */
   display: flex;
   background: var(--white);
   border-radius: 8px;
