@@ -1,0 +1,113 @@
+/* carousel.css */
+
+/* Custom Carousel Container */
+.custom-carousel .carousel {
+    position: relative;
+    width: 23rem;
+    height: 23rem;
+    perspective: 500px;
+    transform-style: preserve-3d;
+  }
+  
+  .custom-carousel .card-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotateY(calc(var(--offset) * 50deg)) scaleY(calc(1 + var(--abs-offset) * -0.4))
+      translateZ(calc(var(--abs-offset) * -30rem)) translateX(calc(var(--offset) / var(--abs-offset) * -5rem));
+    filter: blur(calc(var(--abs-offset) * 1rem));
+    transition: all 0.3s ease-out;
+  }
+  
+  .custom-carousel .card {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    background-color: hsl(280deg, 40%, calc(100% - var(--abs-offset) * 50%));
+    border-radius: 1rem;
+    color: #9ca3af;
+    text-align: justify;
+    transition: all 0.3s ease-out;
+  }
+  
+  .custom-carousel .card h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 0.7em;
+    color: #1f2937;
+  }
+  
+  .custom-carousel .card p,
+  .custom-carousel .card h2 {
+    transition: all 0.3s ease-out;
+    opacity: var(--active);
+  }
+  
+  .custom-carousel .nav {
+    color: white;
+    font-size: 5rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    z-index: 2;
+    cursor: pointer;
+    user-select: none;
+    background: unset;
+    border: unset;
+  }
+  
+  .custom-carousel .nav.left {
+    transform: translateX(-100%) translateY(-50%);
+  }
+  
+  .custom-carousel .nav.right {
+    right: 0;
+    transform: translateX(100%) translateY(-50%);
+  }
+  
+  /* ================================
+   Achievement Card (Within Carousel)
+================================ */
+.achievement-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .achievement-card h3 {
+    font-size: 1.4rem;
+    color: var(--primary-red);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  
+  .achievement-card p {
+    font-size: 1rem;
+    color: var(--grey);
+  }
+  
+  /* Achievement Card SVG/Image Styling */
+  .achievement-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin-bottom: 1rem;
+  }
+  
+  .achievement-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }

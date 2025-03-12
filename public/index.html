@@ -1,116 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>High School Music Department</title>
-  <!-- Global and Page-specific Styles -->
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/index.css">
-  <!-- Optional: Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
-</head>
-<body>
-  <header>
-    <!-- Navigation Bar -->
-    <nav>
-      <div class="logo">
-        <a href="#">Music Dept</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>High School Music Department</title>
+    <!-- Global and Page-specific Styles -->
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/carousel.css" />
+    <!-- Optional: Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
+  </head>
+  <body>
+    <header>
+      <!-- Navigation Bar -->
+      <nav>
+        <div class="logo">
+          <a href="#">Music Dept</a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <!-- Hero Section with Video Background -->
+      <div class="hero">
+        <video class="hero-video" autoplay loop muted playsinline>
+          <source src="videos/hero-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay">
+          <h1>Welcome to Our Music Department</h1>
+          <p>
+            Experience the rhythm and harmony that brings us together.
+          </p>
+          <a href="#about" class="btn">Learn More</a>
+        </div>
       </div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <!-- Hero Section with Video Background -->
-    <div class="hero">
-      <video class="hero-video" autoplay loop muted playsinline>
-        <source src="videos/hero-video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <div class="hero-overlay">
-        <h1>Welcome to Our Music Department</h1>
-        <p>Experience the rhythm and harmony that brings us together.</p>
-        <a href="#about" class="btn">Learn More</a>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- Main Content -->
-  <main>
-    <!-- About Section -->
-    <section id="about">
-      <h2>About Us</h2>
-      <p>Veniam laborum qui reprehenderit est quis ad occaecat eiusmod proident esse dolore aliquip. Cupidatat enim pariatur nostrud amet veniam mollit voluptate. Esse ad ipsum nostrud ex qui esse dolor velit ad do.</p>
-    </section>
+    <!-- Main Content -->
+    <main>
+      <!-- About Section -->
+      <section id="about">
+        <h2>About Us</h2>
+        <p>
+          Veniam laborum qui reprehenderit est quis ad occaecat eiusmod proident
+          esse dolore aliquip. Cupidatat enim pariatur nostrud amet veniam mollit
+          voluptate. Esse ad ipsum nostrud ex qui esse dolor velit ad do.
+        </p>
+      </section>
 
-<!-- Achievements Section -->
-<section id="achievements">
-  <h2>Our Achievements</h2>
-  <!-- Swiper Container -->
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <!-- Each achievement card becomes a swiper slide -->
-      <div class="swiper-slide achievement-card">
-        <img src="images/2.svg" alt="Achievement 1">
-        <h3>Dolore eiusmod est.</h3>
-        <p>Laborum consequat exercitation est fugiat in.</p>
-      </div>
-      <div class="swiper-slide achievement-card">
-        <img src="images/4.svg" alt="Achievement 2">
-        <h3>Quis nulla.</h3>
-        <p>Lorem enim occaecat labore veniam cillum.</p>
-      </div>
-      <div class="swiper-slide achievement-card">
-        <img src="images/8.svg" alt="Achievement 3">
-        <h3>Labore ad.</h3>
-        <p>Duis labore eu dolor velit amet ea proident.</p>
-      </div>
-      <!-- Add additional slides as needed -->
-    </div>
-    <!-- Optional Pagination and Navigation -->
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-  </div>
-</section>
+      <!-- Achievements Section (React Carousel) -->
+      <section id="achievements">
+        <h2>Our Achievements</h2>
+        <!-- React will render the carousel into this container -->
+        <div id="react-carousel"></div>
+      </section>
 
+      <!-- Events Section -->
+      <section id="events">
+        <h2>Upcoming Events</h2>
+        <div id="events-container">
+          <!-- Event tiles will be dynamically added here -->
+        </div>
+      </section>
 
-    <!-- Events Section -->
-    <section id="events">
-      <h2>Upcoming Events</h2>
-      <div id="events-container">
-        <!-- Event tiles will be dynamically added here -->
-      </div>
-    </section>
+      <!-- Contact Section -->
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:musicdept@example.com">musicdept@example.com</a></p>
+        <p>Phone: 123-456-7890</p>
+      </section>
+    </main>
 
-    <!-- Contact Section -->
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <p>Email: <a href="mailto:musicdept@example.com">musicdept@example.com</a></p>
-      <p>Phone: 123-456-7890</p>
-    </section>
-  </main>
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 High School Music Department. All rights reserved.</p>
+    </footer>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 High School Music Department. All rights reserved.</p>
-  </footer>
+    <!-- Scripts -->
+    <script src="js/firebase-events.js"></script>
+    <script src="js/main.js"></script>
 
-<!-- Before main.js -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script src="js/firebase-events.js"></script>
-<script src="js/main.js"></script>
+    <!-- React Carousel Module -->
+    <script type="module">
+      // Import React libraries and icons from CDN
+      import React, { useState } from "https://cdn.skypack.dev/react";
+      import ReactDOM from "https://cdn.skypack.dev/react-dom";
+      import { TiChevronLeftOutline, TiChevronRightOutline } from "https://cdn.skypack.dev/react-icons/ti";
 
+      const MAX_VISIBILITY = 3;
 
-</body>
+      // Achievement Card Component
+      const AchievementCard = ({ title, description, imgSrc, altText }) => (
+        <div className="achievement-card">
+          <img src={imgSrc} alt={altText} />
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </div>
+      );
+
+      // Carousel Component
+      const Carousel = ({ children }) => {
+        const [active, setActive] = useState(0);
+        const count = React.Children.count(children);
+
+        return (
+          <div className="carousel">
+            {active > 0 && (
+              <button className="carousel-button prev" onClick={() => setActive(i => i - 1)}>
+                <TiChevronLeftOutline />
+              </button>
+            )}
+            {React.Children.map(children, (child, i) => (
+              <div
+                className="card-container"
+                style={{
+                  "--active": i === active ? 1 : 0,
+                  "--offset": (active - i) / 3,
+                  "--abs-offset": Math.abs(active - i) / 3,
+                  pointerEvents: active === i ? "auto" : "none",
+                  opacity: Math.abs(active - i) >= MAX_VISIBILITY ? "0" : "1",
+                  display: Math.abs(active - i) > MAX_VISIBILITY ? "none" : "block"
+                }}
+              >
+                {child}
+              </div>
+            ))}
+            {active < count - 1 && (
+              <button className="carousel-button next" onClick={() => setActive(i => i + 1)}>
+                <TiChevronRightOutline />
+              </button>
+            )}
+          </div>
+        );
+      };
+
+      // Sample achievement data (replace these with your actual data)
+      const achievements = [
+        {
+          title: "Dolore eiusmod est.",
+          description: "Laborum consequat exercitation est fugiat in.",
+          imgSrc: "images/2.svg",
+          altText: "Achievement 1"
+        },
+        {
+          title: "Quis nulla.",
+          description: "Lorem enim occaecat labore veniam cillum.",
+          imgSrc: "images/4.svg",
+          altText: "Achievement 2"
+        },
+        {
+          title: "Labore ad.",
+          description: "Duis labore eu dolor velit amet ea proident.",
+          imgSrc: "images/8.svg",
+          altText: "Achievement 3"
+        }
+        // Add more achievement objects as needed
+      ];
+
+      // Main React App for the Carousel
+      const App = () => (
+        <Carousel>
+          {achievements.map((item, i) => (
+            <AchievementCard
+              key={i}
+              title={item.title}
+              description={item.description}
+              imgSrc={item.imgSrc}
+              altText={item.altText}
+            />
+          ))}
+        </Carousel>
+      );
+
+      // Render the React App into the designated container
+      ReactDOM.render(<App />, document.getElementById("react-carousel"));
+    </script>
+  </body>
 </html>
