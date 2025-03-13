@@ -16,6 +16,12 @@
       "img": "images/8.svg",
       "title": "Labore ad.",
       "description": "Duis labore eu dolor velit amet ea proident."
+    },
+    {
+      "id": 4,
+      "img": "images/1.svg",
+      "title": "Lorem ipsum dolor",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem"
     }
    
   ]
