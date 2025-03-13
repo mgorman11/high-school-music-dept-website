@@ -34,48 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
       eventsContainer.appendChild(card);
     });
   });
-
-  // ----- Slider for Achievement Cards -----
-  const slider = document.querySelector('.slider');
-  const prevButton = document.querySelector('.prev');
-  const nextButton = document.querySelector('.next');
-  const cards = document.querySelectorAll('.achievement-card');
-  const totalCards = cards.length;
-
-  // Ensure there are achievement cards before continuing
-  if (totalCards === 0) {
-    console.error("No achievement cards found.");
-    return;
-  }
-
-  // Calculate the angle between each card (full circle divided by total cards)
-  const angleIncrement = 360 / totalCards;
-  let currentRotation = 0;
-  
-  // Position each card in a circle
-  cards.forEach((card, index) => {
-    card.style.transform = `rotateY(${index * angleIncrement}deg) translateZ(300px)`;
-  });
-  
-  function updateRotation() {
-    slider.style.transform = `rotateY(${currentRotation}deg)`;
-  }
-  
-  nextButton.addEventListener('click', function(){
-    currentRotation -= angleIncrement;
-    updateRotation();
-  });
-  
-  prevButton.addEventListener('click', function(){
-    currentRotation += angleIncrement;
-    updateRotation();
-  });
-  
-  // Auto-rotate every 5 seconds
-  setInterval(function(){
-    currentRotation -= angleIncrement;
-    updateRotation();
-  }, 5000);
 });
+
 
 

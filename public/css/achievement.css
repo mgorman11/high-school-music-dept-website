@@ -4,59 +4,56 @@
 #achievements {
     padding: 2em 1em;
     background: #f7f7f7;
-  }
-  
-  .achievements-header {
+}
+
+.achievements-header {
     text-align: center;
     margin-bottom: 1.5em;
     color: #333;
-  }
-  
-  .achievements-header h2 {
+}
+
+.achievements-header h2 {
     font-size: 2.5rem;
     margin-bottom: 0.5em;
-  }
-  
-  .achievements-header p {
+}
+
+.achievements-header p {
     font-size: 1.2rem;
     max-width: 800px;
     margin: 0 auto;
     color: #555;
-  }
-  
-  /* =====================================================
-     Carousel Container
-  ===================================================== */
-/* Container that sets up perspective */
+}
+
+/* =====================================================
+   Carousel Container
+===================================================== */
 .carousel-container {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;
     padding: 2em;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     perspective: 1200px; /* This gives the 3D effect */
     display: flex;
     align-items: center;
-  }
-  
-  /* =====================================================
-     Slider for Achievement Cards
-  ===================================================== */
-/* Slider holds the cards in a circle */
+}
+
+/* =====================================================
+   Slider for Achievement Cards
+===================================================== */
 .slider {
     position: relative;
     width: 100%;
     height: 400px; /* Adjust to your desired height */
     transform-style: preserve-3d;
     transition: transform 0.8s ease;
-  }
-  
-  /* =====================================================
-     Achievement Card Styles
-  ===================================================== */
-/* Achievement cards styling */
+}
+
+/* =====================================================
+   Achievement Card Styles
+===================================================== */
 .achievement-card {
     position: absolute;
     top: 50%;
@@ -70,44 +67,41 @@
     text-align: center;
     transition: transform 0.5s ease, opacity 0.5s ease;
     transform-origin: center center -300px; /* Distance from center of the circle */
-  }
-  
+}
 
-
-  /* Hover effect for interactivity */
-  .achievement-card:hover {
+/* Hover effect for interactivity */
+.achievement-card:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  }
-  
-  /* =====================================================
-     Card Image Styling
-  ===================================================== */
-/* Image styling within cards */
+}
+
+/* =====================================================
+   Card Image Styling
+===================================================== */
 .achievement-card img {
     max-width: 100px;
     margin: 1em auto 0.5em;
     display: block;
-  }
-  
-  /* =====================================================
-     Card Text Styling
-  ===================================================== */
-  .achievement-card h3 {
+}
+
+/* =====================================================
+   Card Text Styling
+===================================================== */
+.achievement-card h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5em;
     color: #222;
-  }
-  
-  .achievement-card p {
+}
+
+.achievement-card p {
     font-size: 1rem;
     color: #555;
-  }
-  
-  /* =====================================================
-     Navigation Buttons
-  ===================================================== */
-  .prev, .next {
+}
+
+/* =====================================================
+   Navigation Buttons
+===================================================== */
+.prev, .next {
     background: #3d76d9;
     border: none;
     color: white;
@@ -115,20 +109,21 @@
     cursor: pointer;
     border-radius: 4px;
     z-index: 2;
-  }
-  
-  .prev:hover, .next:hover {
+}
+
+.prev:hover, .next:hover {
     background: #325bb5;
-  }
-  /* =====================================================
-     Footer CTA
-  ===================================================== */
-  .achievements-footer {
+}
+
+/* =====================================================
+   Footer CTA
+===================================================== */
+.achievements-footer {
     text-align: center;
     margin-top: 1em;
-  }
-  
-  .cta-button {
+}
+
+.cta-button {
     display: inline-block;
     padding: 0.75em 1.5em;
     background: #3d76d9;
@@ -136,25 +131,24 @@
     text-decoration: none;
     border-radius: 4px;
     transition: background 0.3s ease;
-  }
-  
-  .cta-button:hover {
+}
+
+.cta-button:hover {
     background: #325bb5;
-  }
-  
-  /* =====================================================
-     Responsive Tweaks
-  ===================================================== */
-  @media screen and (max-width: 768px) {
+}
+
+/* =====================================================
+   Responsive Tweaks
+===================================================== */
+@media screen and (max-width: 768px) {
     .achievement-card {
-      flex: 0 0 calc(50% - 1em); /* Show 2 cards per row on medium screens */
+        flex: 0 0 calc(50% - 1em); /* Show 2 cards per row on medium screens */
     }
-  }
-  
-  @media screen and (max-width: 480px) {
+}
+
+@media screen and (max-width: 480px) {
     .achievement-card {
-      flex: 0 0 100%; /* Show 1 card per row on small screens */
-      margin: 0.5em 0; /* Adjust margin for vertical spacing */
+        flex: 0 0 100%; /* Show 1 card per row on small screens */
+        margin: 0.5em 0; /* Adjust margin for vertical spacing */
     }
-  }
-  
+}
