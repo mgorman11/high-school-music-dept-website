@@ -1,4 +1,6 @@
-/* Achievements Header */
+/* =====================================================
+   Achievements Header
+===================================================== */
 #achievements {
     padding: 2em 1em;
     background: #f7f7f7;
@@ -22,7 +24,9 @@
     color: #555;
   }
   
-  /* Carousel Container */
+  /* =====================================================
+     Carousel Container
+  ===================================================== */
   .carousel-container {
     position: relative;
     max-width: 1200px;
@@ -35,16 +39,20 @@
     border-radius: 8px;
   }
   
-  /* Slider for Achievement Cards */
+  /* =====================================================
+     Slider for Achievement Cards
+  ===================================================== */
   .slider {
     display: flex;
     transition: transform 0.5s ease;
     width: 100%;
   }
   
-  /* Achievement Card Styles */
+  /* =====================================================
+     Achievement Card Styles
+  ===================================================== */
   .achievement-card {
-    flex: 0 0 33.33%;
+    flex: 0 0 calc(33.33% - 1em); /* Subtract margin to prevent overflow */
     padding: 1em;
     box-sizing: border-box;
     text-align: center;
@@ -52,20 +60,27 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 0 0.5em;
+    margin: 0 0.5em; /* Horizontal margin */
   }
   
+  /* Hover effect for interactivity */
   .achievement-card:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
   }
   
+  /* =====================================================
+     Card Image Styling
+  ===================================================== */
   .achievement-card img {
     max-width: 100px;
     margin: 0 auto 1em;
     display: block;
   }
   
+  /* =====================================================
+     Card Text Styling
+  ===================================================== */
   .achievement-card h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5em;
@@ -77,20 +92,26 @@
     color: #555;
   }
   
-  /* Navigation Buttons */
+  /* =====================================================
+     Navigation Buttons
+  ===================================================== */
   .prev, .next {
     background: #3d76d9;
     border: none;
     color: white;
     padding: 1em;
     cursor: pointer;
+    border-radius: 4px;
+    margin: 0 0.5em;
   }
   
   .prev:hover, .next:hover {
     background: #325bb5;
   }
   
-  /* Footer CTA */
+  /* =====================================================
+     Footer CTA
+  ===================================================== */
   .achievements-footer {
     text-align: center;
     margin-top: 1em;
@@ -108,5 +129,21 @@
   
   .cta-button:hover {
     background: #325bb5;
+  }
+  
+  /* =====================================================
+     Responsive Tweaks
+  ===================================================== */
+  @media screen and (max-width: 768px) {
+    .achievement-card {
+      flex: 0 0 calc(50% - 1em); /* Show 2 cards per row on medium screens */
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .achievement-card {
+      flex: 0 0 100%; /* Show 1 card per row on small screens */
+      margin: 0.5em 0; /* Adjust margin for vertical spacing */
+    }
   }
   

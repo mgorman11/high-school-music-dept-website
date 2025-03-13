@@ -34,9 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
       eventsContainer.appendChild(card);
     });
   });
-});
 
-document.addEventListener('DOMContentLoaded', function(){
+  // ----- Slider for Achievement Cards -----
   const slider = document.querySelector('.slider');
   const prevButton = document.querySelector('.prev');
   const nextButton = document.querySelector('.next');
