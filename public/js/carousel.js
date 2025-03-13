@@ -1,9 +1,43 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Declare the container and controller
   const cardsContainer = document.querySelector(".card-carousel");
   const cardsController = document.querySelector(".card-carousel + .card-controller");
   
-  // --- Class Definitions ---
+  // Function to load card data from JSON and initialize the carousel
+  function loadCards() {
+    fetch('data/cards.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(cardsData => {
+        let cardsHTML = '';
+        cardsData.forEach(card => {
+          cardsHTML += `
+            <div class="card" id="${card.id}">
+              <div class="image-container">
+                <img src="${card.img}" alt="${card.title}">
+              </div>
+              <h3>${card.title}</h3>
+              <p>${card.description}</p>
+            </div>
+          `;
+        });
+        cardsContainer.innerHTML = cardsHTML;
+        
+        // Initialize the carousel after cards have been loaded
+        new CardCarousel(cardsContainer, cardsController);
+      })
+      .catch(error => {
+        console.error('Error fetching carousel data:', error);
+      });
+  }
+  
+  // Call the function to load cards and initialize the carousel
+  loadCards();
+  
+  // --- Dragging and Carousel Classes ---
   
   class DraggingEvent {
     constructor(target = undefined) {
@@ -80,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
   class CardCarousel extends DraggingEvent {
     constructor(container, controller = undefined) {
       super(container);
+      
       this.container = container;
       this.controllerElement = controller;
       this.cards = container.querySelectorAll(".card");
@@ -89,22 +124,17 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
-      // Carousel data
       this.centerIndex = (this.cards.length - 1) / 2;
       this.cardWidth = (this.cards[0].offsetWidth / this.container.offsetWidth) * 100;
       this.xScale = {};
       
-      // Resizing
       window.addEventListener("resize", this.updateCardWidth.bind(this));
       
       if (this.controllerElement) {
         this.controllerElement.addEventListener("keydown", this.controller.bind(this));
       }
       
-      // Build initial layout
       this.build();
-      
-      // Bind dragging event to move the cards
       super.getDistance(this.moveCards.bind(this));
     }
     
@@ -129,14 +159,12 @@ document.addEventListener('DOMContentLoaded', function() {
     controller(e) {
       const temp = { ...this.xScale };
       if (e.keyCode === 39) {
-        // Left arrow
         for (let x in this.xScale) {
           const newX = (parseInt(x) - 1 < -this.centerIndex) ? this.centerIndex : parseInt(x) - 1;
           temp[newX] = this.xScale[x];
         }
       }
       if (e.keyCode === 37) {
-        // Right arrow
         for (let x in this.xScale) {
           const newX = (parseInt(x) + 1 > this.centerIndex) ? -this.centerIndex : parseInt(x) + 1;
           temp[newX] = this.xScale[x];
@@ -243,9 +271,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // --- Dynamic Data Loading ---
+  // End of Class Definitions
   
-  // Fetch the card data from the JSON file
+  // --- Dynamic Data Loading & Initialization ---
+  
+  // Fetch the card data from the JSON file and initialize the carousel.
   fetch('data/cards.json')
     .then(response => {
       if (!response.ok) {
@@ -269,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Insert the generated HTML into the container
       cardsContainer.innerHTML = cardsHTML;
       
-      // Now that the cards are inserted, re-initialize the carousel.
+      // Initialize the carousel with the newly inserted cards
       new CardCarousel(cardsContainer, cardsController);
     })
     .catch(error => {
