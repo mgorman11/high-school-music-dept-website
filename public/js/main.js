@@ -41,41 +41,41 @@ document.addEventListener('DOMContentLoaded', function() {
   const nextButton = document.querySelector('.next');
   const cards = document.querySelectorAll('.achievement-card');
   const totalCards = cards.length;
-  const visibleCards = 3; // Show 3 cards at a time
-  let currentIndex = 0;
+
+  // Ensure there are achievement cards before continuing
+  if (totalCards === 0) {
+    console.error("No achievement cards found.");
+    return;
+  }
+
+  // Calculate the angle between each card (full circle divided by total cards)
+  const angleIncrement = 360 / totalCards;
+  let currentRotation = 0;
   
-  function updateSlider() {
-    // Calculate percentage shift: 100% / number of visible cards times currentIndex
-    const shift = currentIndex * (100 / visibleCards);
-    slider.style.transform = `translateX(-${shift}%)`;
+  // Position each card in a circle
+  cards.forEach((card, index) => {
+    card.style.transform = `rotateY(${index * angleIncrement}deg) translateZ(300px)`;
+  });
+  
+  function updateRotation() {
+    slider.style.transform = `rotateY(${currentRotation}deg)`;
   }
   
   nextButton.addEventListener('click', function(){
-    if(currentIndex < totalCards - visibleCards){
-      currentIndex++;
-    } else {
-      currentIndex = 0; // Loop back to start
-    }
-    updateSlider();
+    currentRotation -= angleIncrement;
+    updateRotation();
   });
   
   prevButton.addEventListener('click', function(){
-    if(currentIndex > 0){
-      currentIndex--;
-    } else {
-      currentIndex = totalCards - visibleCards; // Loop to end
-    }
-    updateSlider();
+    currentRotation += angleIncrement;
+    updateRotation();
   });
   
-  // Optional: Auto-rotate every 5 seconds
+  // Auto-rotate every 5 seconds
   setInterval(function(){
-    if(currentIndex < totalCards - visibleCards){
-      currentIndex++;
-    } else {
-      currentIndex = 0;
-    }
-    updateSlider();
+    currentRotation -= angleIncrement;
+    updateRotation();
   }, 5000);
 });
+
 

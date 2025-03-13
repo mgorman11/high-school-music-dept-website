@@ -27,42 +27,53 @@
   /* =====================================================
      Carousel Container
   ===================================================== */
-  .carousel-container {
+/* Container that sets up perspective */
+.carousel-container {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;
+    padding: 2em;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    perspective: 1200px; /* This gives the 3D effect */
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1em;
-    border-radius: 8px;
   }
   
   /* =====================================================
      Slider for Achievement Cards
   ===================================================== */
-  .slider {
-    display: flex;
-    transition: transform 0.5s ease;
+/* Slider holds the cards in a circle */
+.slider {
+    position: relative;
     width: 100%;
+    height: 400px; /* Adjust to your desired height */
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
   }
   
   /* =====================================================
      Achievement Card Styles
   ===================================================== */
-  .achievement-card {
-    flex: 0 0 calc(33.33% - 1em); /* Subtract margin to prevent overflow */
-    padding: 1em;
-    box-sizing: border-box;
-    text-align: center;
+/* Achievement cards styling */
+.achievement-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 280px;
+    height: 350px;
+    margin: -175px 0 0 -140px; /* Center the card (half of height and width) */
     background: white;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 0 0.5em; /* Horizontal margin */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-align: center;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform-origin: center center -300px; /* Distance from center of the circle */
   }
   
+
+
   /* Hover effect for interactivity */
   .achievement-card:hover {
     transform: scale(1.05);
@@ -72,9 +83,10 @@
   /* =====================================================
      Card Image Styling
   ===================================================== */
-  .achievement-card img {
+/* Image styling within cards */
+.achievement-card img {
     max-width: 100px;
-    margin: 0 auto 1em;
+    margin: 1em auto 0.5em;
     display: block;
   }
   
@@ -102,13 +114,12 @@
     padding: 1em;
     cursor: pointer;
     border-radius: 4px;
-    margin: 0 0.5em;
+    z-index: 2;
   }
   
   .prev:hover, .next:hover {
     background: #325bb5;
   }
-  
   /* =====================================================
      Footer CTA
   ===================================================== */
