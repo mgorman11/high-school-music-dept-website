@@ -1,7 +1,7 @@
-/* Achievements Section */
+/* Achievements Header */
 #achievements {
     padding: 2em 1em;
-    background: url('images/musical-notes.png') center/cover no-repeat, #f7f7f7;
+    background: #f7f7f7;
   }
   
   .achievements-header {
@@ -22,26 +22,37 @@
     color: #555;
   }
   
-  /* Responsive Grid */
-  .achievements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2em;
+  /* Carousel Container */
+  .carousel-container {
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2em;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1em;
+    border-radius: 8px;
   }
   
-  /* Achievement Cards */
+  /* Slider for Achievement Cards */
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+  }
+  
+  /* Achievement Card Styles */
   .achievement-card {
-    position: relative;
-    background: white;
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 8px;
-    padding: 1.5em;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex: 0 0 33.33%;
+    padding: 1em;
+    box-sizing: border-box;
     text-align: center;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 0.5em;
   }
   
   .achievement-card:hover {
@@ -64,6 +75,19 @@
   .achievement-card p {
     font-size: 1rem;
     color: #555;
+  }
+  
+  /* Navigation Buttons */
+  .prev, .next {
+    background: #3d76d9;
+    border: none;
+    color: white;
+    padding: 1em;
+    cursor: pointer;
+  }
+  
+  .prev:hover, .next:hover {
+    background: #325bb5;
   }
   
   /* Footer CTA */

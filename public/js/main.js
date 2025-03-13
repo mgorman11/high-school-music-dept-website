@@ -36,3 +36,47 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function(){
+  const slider = document.querySelector('.slider');
+  const prevButton = document.querySelector('.prev');
+  const nextButton = document.querySelector('.next');
+  const cards = document.querySelectorAll('.achievement-card');
+  const totalCards = cards.length;
+  const visibleCards = 3; // Show 3 cards at a time
+  let currentIndex = 0;
+  
+  function updateSlider() {
+    // Calculate percentage shift: 100% / number of visible cards times currentIndex
+    const shift = currentIndex * (100 / visibleCards);
+    slider.style.transform = `translateX(-${shift}%)`;
+  }
+  
+  nextButton.addEventListener('click', function(){
+    if(currentIndex < totalCards - visibleCards){
+      currentIndex++;
+    } else {
+      currentIndex = 0; // Loop back to start
+    }
+    updateSlider();
+  });
+  
+  prevButton.addEventListener('click', function(){
+    if(currentIndex > 0){
+      currentIndex--;
+    } else {
+      currentIndex = totalCards - visibleCards; // Loop to end
+    }
+    updateSlider();
+  });
+  
+  // Optional: Auto-rotate every 5 seconds
+  setInterval(function(){
+    if(currentIndex < totalCards - visibleCards){
+      currentIndex++;
+    } else {
+      currentIndex = 0;
+    }
+    updateSlider();
+  }, 5000);
+});
+
