@@ -182,15 +182,21 @@ document.addEventListener('DOMContentLoaded', function() {
     
     calcPos(x, scale) {
       let formula;
+      // Additional offset percentage (experiment with the value)
+      const additionalOffset = 10; // Increase this value to spread cards further apart
+      
       if (x < 0) {
-        formula = (scale * 100 - this.cardWidth) / 2;
+        // For cards to the left, subtract additional offset
+        formula = (scale * 100 - this.cardWidth) / 2 - additionalOffset;
       } else if (x > 0) {
-        formula = 100 - (scale * 100 + this.cardWidth) / 2;
+        // For cards to the right, add additional offset
+        formula = 100 - (scale * 100 + this.cardWidth) / 2 + additionalOffset;
       } else {
         formula = 100 - (scale * 100 + this.cardWidth) / 2;
       }
       return formula;
     }
+    
     
     updateCards(card, data) {
       if (data.x || data.x === 0) {
