@@ -1,38 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const carouselContainer = document.querySelector('.card-carousel');
+  // Declare the container and controller
+  const cardsContainer = document.querySelector(".card-carousel");
+  const cardsController = document.querySelector(".card-carousel + .card-controller");
   
-  // Fetch the card data from the JSON file
-  fetch('data/cards.json')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(cardsData => {
-      let cardsHTML = '';
-      cardsData.forEach(card => {
-        cardsHTML += `
-          <div class="card" id="${card.id}">
-            <div class="image-container">
-              <img src="${card.img}" alt="${card.title}">
-            </div>
-            <h3>${card.title}</h3>
-            <p>${card.description}</p>
-          </div>
-        `;
-      });
-      // Insert the generated HTML into the carousel container
-      carouselContainer.innerHTML = cardsHTML;
-      
-      // Now that the cards are inserted, initialize the carousel
-      new CardCarousel(carouselContainer);
-    })
-    .catch(error => {
-      console.error('Error fetching carousel data:', error);
-    });
-  
-  // The rest of your existing dragging and carousel functionality remains here:
+  // --- Class Definitions ---
   
   class DraggingEvent {
     constructor(target = undefined) {
@@ -109,11 +80,14 @@ document.addEventListener('DOMContentLoaded', function() {
   class CardCarousel extends DraggingEvent {
     constructor(container, controller = undefined) {
       super(container);
-      
-      // DOM elements
       this.container = container;
       this.controllerElement = controller;
       this.cards = container.querySelectorAll(".card");
+      
+      if (this.cards.length === 0) {
+        console.error("No cards found in the carousel container!");
+        return;
+      }
       
       // Carousel data
       this.centerIndex = (this.cards.length - 1) / 2;
@@ -148,19 +122,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const leftPos = this.calcPos(x, scale2);
         
         this.xScale[x] = this.cards[i];
-        
-        this.updateCards(this.cards[i], {
-          x: x,
-          scale: scale,
-          leftPos: leftPos,
-          zIndex: zIndex
-        });
+        this.updateCards(this.cards[i], { x, scale, leftPos, zIndex });
       }
     }
     
     controller(e) {
       const temp = { ...this.xScale };
-        
       if (e.keyCode === 39) {
         // Left arrow
         for (let x in this.xScale) {
@@ -168,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
           temp[newX] = this.xScale[x];
         }
       }
-      
       if (e.keyCode === 37) {
         // Right arrow
         for (let x in this.xScale) {
@@ -176,21 +142,13 @@ document.addEventListener('DOMContentLoaded', function() {
           temp[newX] = this.xScale[x];
         }
       }
-      
       this.xScale = temp;
-      
       for (let x in temp) {
         const scale = this.calcScale(x),
               scale2 = this.calcScale2(x),
               leftPos = this.calcPos(x, scale2),
               zIndex = -Math.abs(x);
-        
-        this.updateCards(this.xScale[x], {
-          x: x,
-          scale: scale,
-          leftPos: leftPos,
-          zIndex: zIndex
-        });
+        this.updateCards(this.xScale[x], { x, scale, leftPos, zIndex });
       }
     }
     
@@ -198,30 +156,25 @@ document.addEventListener('DOMContentLoaded', function() {
       let formula;
       if (x < 0) {
         formula = (scale * 100 - this.cardWidth) / 2;
-        return formula;
       } else if (x > 0) {
         formula = 100 - (scale * 100 + this.cardWidth) / 2;
-        return formula;
       } else {
         formula = 100 - (scale * 100 + this.cardWidth) / 2;
-        return formula;
       }
+      return formula;
     }
     
     updateCards(card, data) {
       if (data.x || data.x === 0) {
         card.setAttribute("data-x", data.x);
       }
-      
       if (data.scale || data.scale === 0) {
         card.style.transform = `scale(${data.scale})`;
         card.style.opacity = data.scale === 0 ? 0 : 1;
       }
-      
       if (data.leftPos || data.leftPos === 0) {
         card.style.left = `${data.leftPos}%`;
       }
-      
       if (data.zIndex || data.zIndex === 0) {
         if (data.zIndex === 0) {
           card.classList.add("highlight");
@@ -236,11 +189,10 @@ document.addEventListener('DOMContentLoaded', function() {
       let formula;
       if (x <= 0) {
         formula = 1 - (-1 / 5 * x);
-        return formula;
       } else if (x > 0) {
         formula = 1 - (1 / 5 * x);
-        return formula;
       }
+      return formula;
     }
     
     calcScale(x) {
@@ -248,11 +200,10 @@ document.addEventListener('DOMContentLoaded', function() {
       return formula <= 0 ? 0 : formula;
     }
     
-    checkOrdering(card, x, xDist) {    
+    checkOrdering(card, x, xDist) {
       const original = parseInt(card.dataset.x);
       const rounded = Math.round(xDist);
       let newX = x;
-      
       if (x !== x + rounded) {
         if (x + rounded > original) {
           if (x + rounded > this.centerIndex) {
@@ -265,7 +216,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         this.xScale[newX + rounded] = card;
       }
-      
       const temp = -Math.abs(newX + rounded);
       this.updateCards(card, { zIndex: temp });
       return newX;
@@ -273,7 +223,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     moveCards(data) {
       let xDist;
-      
       if (data != null) {
         this.container.classList.remove("smooth-return");
         xDist = data.x / 250;
@@ -281,26 +230,49 @@ document.addEventListener('DOMContentLoaded', function() {
         this.container.classList.add("smooth-return");
         xDist = 0;
         for (let x in this.xScale) {
-          this.updateCards(this.xScale[x], {
-            x: x,
-            zIndex: Math.abs(Math.abs(x) - this.centerIndex)
-          });
+          this.updateCards(this.xScale[x], { x, zIndex: Math.abs(Math.abs(x) - this.centerIndex) });
         }
       }
-      
       for (let i = 0; i < this.cards.length; i++) {
         const x = this.checkOrdering(this.cards[i], parseInt(this.cards[i].dataset.x), xDist),
               scale = this.calcScale(x + xDist),
               scale2 = this.calcScale2(x + xDist),
               leftPos = this.calcPos(x + xDist, scale2);
-        
-        this.updateCards(this.cards[i], {
-          scale: scale,
-          leftPos: leftPos
-        });
+        this.updateCards(this.cards[i], { scale, leftPos });
       }
     }
   }
   
-  const carousel = new CardCarousel(cardsContainer);
+  // --- Dynamic Data Loading ---
+  
+  // Fetch the card data from the JSON file
+  fetch('data/cards.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(cardsData => {
+      let cardsHTML = '';
+      cardsData.forEach(card => {
+        cardsHTML += `
+          <div class="card" id="${card.id}">
+            <div class="image-container">
+              <img src="${card.img}" alt="${card.title}">
+            </div>
+            <h3>${card.title}</h3>
+            <p>${card.description}</p>
+          </div>
+        `;
+      });
+      // Insert the generated HTML into the container
+      cardsContainer.innerHTML = cardsHTML;
+      
+      // Now that the cards are inserted, re-initialize the carousel.
+      new CardCarousel(cardsContainer, cardsController);
+    })
+    .catch(error => {
+      console.error('Error fetching carousel data:', error);
+    });
 });
